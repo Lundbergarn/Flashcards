@@ -284,7 +284,7 @@ class App extends React.Component {
 
   // Load cards
   loadCards() {
-    fetch(`http://localhost:3001/cards`)
+    fetch(`/cards`)
       .then((resp) => resp.json())
       .then(cards => cards.reverse())
       .then(cards => this.setState({cards}))
@@ -309,7 +309,7 @@ class App extends React.Component {
         cards: [{ front, back, category }, ...state.cards]
       }));
       
-      await fetch(`http://localhost:3001/cards`, {
+      await fetch(`/cards`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json, text/plain, */*',
@@ -336,7 +336,7 @@ class App extends React.Component {
       return { cards };
     });
 
-    await fetch(`http://localhost:3001/cards/${id}` , {
+    await fetch(`/cards/${id}` , {
       method: 'DELETE'
     }).then(res => res.json())
       .then(res => console.log(res));
